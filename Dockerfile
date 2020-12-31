@@ -1,6 +1,6 @@
 # Dockerfile: hombre-grafana
 
-FROM grafana/grafana:7.0.0
+FROM grafana/grafana:7.3.6
 
 USER root
 
@@ -14,8 +14,6 @@ LABEL maintainer="Hombrelab <me@hombrelab.com>"
 LABEL inspiration="getting things done my way"
 
 RUN apk add --no-cache \
-    bash \
-    nano \
     git \
     build-base
 
