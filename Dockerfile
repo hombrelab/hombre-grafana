@@ -17,31 +17,31 @@ RUN apk add --no-cache \
     git \
     build-base
 
-RUN addgroup grafana \
-    && addgroup grafana grafana \
-    && mkdir -p "$GF_PATHS_PLUGINS" \
-    && chown -R grafana:grafana "$GF_PATHS_PLUGINS"
+#RUN addgroup grafana \
+#    && addgroup grafana grafana \
+#    && mkdir -p "$GF_PATHS_PLUGINS" \
+#    && chown -R grafana:grafana "$GF_PATHS_PLUGINS"
+#
+#USER grafana
 
-USER grafana
-
-ARG GF_INSTALL_PLUGINS="grafana-clock-panel \
-	,grafana-piechart-panel \
-	,savantly-heatmap-panel \
-	,mtanda-histogram-panel \
-	,ryantxu-ajax-panel \
-	,digiapulssi-breadcrumb-panel \
-	,vonage-status-panel \
-	,marcuscalidus-svg-panel \
-	,aidanmountford-html-panel \
-	,mxswat-separator-panel \
-	,simpod-json-datasource \
-	,paytm-kapacitor-datasource"
-
-RUN if [ ! -z "${GF_INSTALL_PLUGINS}" ]; then \
-        OLDIFS=$IFS; \
-            IFS=','; \
-        for plugin in ${GF_INSTALL_PLUGINS}; do \
-            IFS=$OLDIFS; \
-            grafana-cli --pluginsDir "$GF_PATHS_PLUGINS" plugins install ${plugin}; \
-        done; \
-    fi
+#ARG GF_INSTALL_PLUGINS="grafana-clock-panel \
+#	,grafana-piechart-panel \
+#	,savantly-heatmap-panel \
+#	,mtanda-histogram-panel \
+#	,ryantxu-ajax-panel \
+#	,digiapulssi-breadcrumb-panel \
+#	,vonage-status-panel \
+#	,marcuscalidus-svg-panel \
+#	,aidanmountford-html-panel \
+#	,mxswat-separator-panel \
+#	,simpod-json-datasource \
+#	,paytm-kapacitor-datasource"
+#
+#RUN if [ ! -z "${GF_INSTALL_PLUGINS}" ]; then \
+#        OLDIFS=$IFS; \
+#            IFS=','; \
+#        for plugin in ${GF_INSTALL_PLUGINS}; do \
+#            IFS=$OLDIFS; \
+#            grafana-cli --pluginsDir "$GF_PATHS_PLUGINS" plugins install ${plugin}; \
+#        done; \
+#    fi
